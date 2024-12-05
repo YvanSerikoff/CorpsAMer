@@ -1,0 +1,126 @@
+.cloud {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #f0f0f0;
+    border-radius: 50%;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    display: none;
+}
+
+.quiz-container {
+    position: relative;
+    margin: 20px auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 600px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    display: none; /* Masqué par défaut */
+}
+
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quiz-label {
+    background: #fff;
+    padding: 5px 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.score-label {
+    background: #fff;
+    padding: 5px 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    font-weight: bold;
+    position: relative;
+}
+
+.multiplier {
+    font-size: 0.8em;
+    color: #000;
+    margin-top: 5px;
+}
+
+.multiplier.green {
+    color: #28a745;
+}
+
+.options-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.option {
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+    cursor: pointer;
+    text-align: center;
+}
+
+.option:hover {
+    background: #e0e0e0;
+}
+
+.option.selected {
+    background: #d0e0f0;
+    border-color: #007bff;
+}
+
+.option.correct {
+    background: #d4edda;
+    border-color: #28a745;
+    color: #155724;
+}
+
+.option.incorrect {
+    background: #f8d7da;
+    border-color: #dc3545;
+    color: #721c24;
+}
+
+.validate-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.validate-button:hover {
+    background: #0056b3;
+}
+
+.explanation {
+    margin-top: 20px;
+    padding: 10px;
+    background: #f0f0f0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.score {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
