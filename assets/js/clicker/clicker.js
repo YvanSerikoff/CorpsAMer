@@ -1,5 +1,4 @@
-let score = 0;
-let totalScore = 0;
+let score = 0 ;
 
 const scoreDisplay = document.getElementById('score');
 const totalScoreDisplay = document.getElementById('totalScore');
@@ -22,6 +21,8 @@ document.getElementById('plankton').addEventListener('click', function() {
         plankton.classList.remove('clicked');
         void plankton.offsetWidth; // Force reflow to restart the animation
     }
+    score+= clickValue;
+    document.getElementById('score').textContent = score;
     score += 10;
     totalScore += 10;
     scoreDisplay.textContent = score;
