@@ -1,12 +1,15 @@
-let score = 500 ;
+let score = 1 ;
 let totalScore = 0;
+let scoreFinal = 10;
 
 const scoreDisplay = document.getElementById('score');
 const totalScoreDisplay = document.getElementById('totalScore');
+const scoreFinalDisplay = document.getElementById('scoreFinal')
 
 // Récupérer le score et le totalScore depuis localStorage s'ils existent
 const savedScore = localStorage.getItem('score');
 const savedTotalScore = localStorage.getItem('totalScore');
+const savedFinalScore = localStorage.getItem('scoreFinal');
 if (savedScore !== null) {
     score = parseInt(savedScore, 10); // Convertir la valeur en nombre
     scoreDisplay.textContent = score; // Mettre à jour l'affichage
@@ -14,6 +17,11 @@ if (savedScore !== null) {
 if (savedTotalScore !== null) {
     totalScore = parseInt(savedTotalScore, 10); // Convertir la valeur en nombre
     totalScoreDisplay.textContent = totalScore; // Mettre à jour l'affichage
+}
+
+if(savedFinalScore !== null){
+    scoreFinal = parseInt(savedFinalScore, 10);
+    scoreFinalDisplay.textContent = scoreFinal;
 }
 
 document.getElementById('plankton').addEventListener('click', function() {
@@ -29,8 +37,14 @@ document.getElementById('plankton').addEventListener('click', function() {
     totalScoreDisplay.textContent = totalScore;
     localStorage.setItem('score', score);
     localStorage.setItem('totalScore', totalScore);
+    localStorage.setItem('scoreFinal', scoreFinal);
 
     plankton.classList.add('clicked');
+
+    if (score >= scoreFinal) {
+        alert('Congratulations! You have reached the final score!');
+        // Additional logic for when the final score is reached
+    }
 });
 
 const resetButton = document.getElementById('reset-button');
