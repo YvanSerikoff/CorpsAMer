@@ -8,8 +8,33 @@
 </head>
 <body>
 <h1>Plankton Clicker</h1>
-<img alt="Plankton" id="plankton" src="assets/images/clicker/planton_clicker.png">
-<p>Score: <span id="score">0</span></p>
+<section id="shop">
+  <table>
+    <tr>
+      <th>Upgrades</th>
+    </tr>
+    <tr>
+      <td>Increase click value</td>
+      <td>100 points</td>
+      <td><button id="upgrade1">Buy</button></td>
+    </tr>
+    <tr>
+      <td>Double click speed</td>
+      <td>200 points</td>
+      <td><button id="upgrade2">Buy</button></td>
+    </tr>
+    <tr>
+      <td>Auto-clicker</td>
+      <td>500 points</td>
+      <td><button id="upgrade3">Buy</button></td>
+    </tr>
+  </table>
+  <script src="assets/js/shop.js"></script>
+</section>
+<section id="Clicker">
+  <img alt="Plankton" id="plankton" src="assets/images/clicker/planton_clicker.png">
+  <p>Score: <span id="score">0</span></p>
+</section>
 
 <script src="assets/js/clicker.js"></script>
 </body>
