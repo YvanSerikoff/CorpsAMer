@@ -1,4 +1,4 @@
-let score = 0 ;
+let score = 500 ;
 
 const scoreDisplay = document.getElementById('score');
 

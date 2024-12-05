@@ -28,10 +28,18 @@ function renderUpgrades() {
 }
 
 function buyUpgrade(index) {
-    const upgrade = upgrades.splice(index, 1)[0];
-    // Handle the purchase logic here (e.g., deduct points, apply upgrade effect)
-    console.log(`Purchased: ${upgrade.description}`);
-    renderUpgrades();
+    const upgrade = upgrades[index];
+    if(score >= upgrade.price){
+        score -= upgrade.price
+        scoreDisplay.textContent = score
+        upgrades.splice(index,1)
+        // Handle the purchase logic here (e.g., deduct points, apply upgrade effect)
+        console.log(`Purchased: ${upgrade.description}`);
+        renderUpgrades();
+    }else {
+        console.log('Pas assez de score pour acheter cette upgrade');
+    }
+
 }
 
 document.addEventListener('DOMContentLoaded', renderUpgrades);
