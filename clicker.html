@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="assets/css/clicker/shop.css">
 </head>
 <body>
+<progress id="progressBar" value="0" max="1000000"></progress>
 <button id="toggleShopButton">Toggle Shop</button>
 <section id="shop">
   <h2>Shop</h2>
@@ -32,11 +33,12 @@
       <td><button id="upgrade3">Buy</button></td>
     </tr>
   </table>
+    <p>Bulles : <span id="score">0</span></p>
 </section>
 <section id="Clicker">
   <img alt="Plankton" id="plankton" src="assets/images/clicker/planton_clicker.png">
-  <p>Score: <span id="score">0</span></p>
-    <p>Total score: <span id="totalScore">0</span></p>
+
+   <span id="totalScore">0</span>
   <button id="reset-button">Reset button </button>
 </section>
 

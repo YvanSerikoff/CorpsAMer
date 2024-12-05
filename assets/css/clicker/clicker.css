@@ -11,3 +11,7 @@
 #score {
     font-size: 24px;
 }
+
+#totalScore{
+    display: none;
+}

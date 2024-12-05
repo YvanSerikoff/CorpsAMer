@@ -1,8 +1,9 @@
-let score = 500 ;
+let score = 500;
 let totalScore = 0;
 
 const scoreDisplay = document.getElementById('score');
 const totalScoreDisplay = document.getElementById('totalScore');
+const progressBar = document.getElementById('progressBar');
 
 // Récupérer le score et le totalScore depuis localStorage s'ils existent
 const savedScore = localStorage.getItem('score');
@@ -14,6 +15,7 @@ if (savedScore !== null) {
 if (savedTotalScore !== null) {
     totalScore = parseInt(savedTotalScore, 10); // Convertir la valeur en nombre
     totalScoreDisplay.textContent = totalScore; // Mettre à jour l'affichage
+    progressBar.value = totalScore; // Mettre à jour la barre de progression
 }
 
 document.getElementById('plankton').addEventListener('click', function() {
@@ -22,11 +24,11 @@ document.getElementById('plankton').addEventListener('click', function() {
         plankton.classList.remove('clicked');
         void plankton.offsetWidth; // Force reflow to restart the animation
     }
-    score+= clickValue;
-    document.getElementById('score').textContent = score;
+    score += clickValue;
     totalScore += clickValue;
     scoreDisplay.textContent = score;
     totalScoreDisplay.textContent = totalScore;
+    progressBar.value = totalScore; // Mettre à jour la barre de progression
     localStorage.setItem('score', score);
     localStorage.setItem('totalScore', totalScore);
 
@@ -40,6 +42,7 @@ resetButton.addEventListener('click', () => {
     totalScore = 0; // Réinitialiser le totalScore
     scoreDisplay.textContent = score; // Mettre à jour l'affichage
     totalScoreDisplay.textContent = totalScore; // Mettre à jour l'affichage
-    clickValue = 1; // Réinitialiser la valeur du click
+    progressBar.value = totalScore; // Réinitialiser la barre de progression
+    clickValue = 10000; // Réinitialiser la valeur du click
     localStorage.removeItem('score'); // Supprimer le score du localStorage
 });

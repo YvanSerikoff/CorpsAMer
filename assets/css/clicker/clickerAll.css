@@ -26,6 +26,15 @@ body {
     flex-direction: column;
 }
 
+#progressBar {
+    width: 50%;
+    height: 2em;
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 #Clicker {
     display: flex;
     flex-direction: column;
@@ -42,7 +51,7 @@ body {
 #toggleShopButton {
     display: none; /* Hide button by default */
     position: fixed;
-    top: 10px;
+    top: 4em;
     right: 10px;
     z-index: 1000;
     padding: 10px 20px;
@@ -55,7 +64,6 @@ body {
 @media (max-width: 768px) {
     #shop {
         display: none; /* Hide shop by default on small screens */
-         background-color: #45aaf2;
     }
 
     #toggleShopButton {
