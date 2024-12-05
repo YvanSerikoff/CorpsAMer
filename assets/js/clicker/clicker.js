@@ -1,4 +1,5 @@
-let score = 0 ;
+let score = 500 ;
+let totalScore = 0;
 
 const scoreDisplay = document.getElementById('score');
 const totalScoreDisplay = document.getElementById('totalScore');
@@ -23,8 +24,7 @@ document.getElementById('plankton').addEventListener('click', function() {
     }
     score+= clickValue;
     document.getElementById('score').textContent = score;
-    score += 10;
-    totalScore += 10;
+    totalScore += clickValue;
     scoreDisplay.textContent = score;
     totalScoreDisplay.textContent = totalScore;
     localStorage.setItem('score', score);
@@ -40,5 +40,6 @@ resetButton.addEventListener('click', () => {
     totalScore = 0; // Réinitialiser le totalScore
     scoreDisplay.textContent = score; // Mettre à jour l'affichage
     totalScoreDisplay.textContent = totalScore; // Mettre à jour l'affichage
+    clickValue = 1; // Réinitialiser la valeur du click
     localStorage.removeItem('score'); // Supprimer le score du localStorage
 });
