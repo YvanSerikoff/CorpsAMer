@@ -9,11 +9,7 @@ const upgrades = [
 function renderUpgrades() {
     const shopTable = document.querySelector('#shop table');
     shopTable.innerHTML = `
-        <tr>
-            <th>Description</th>
-            <th>Price</th>
-            <th>Purchase</th>
-        </tr>
+
     `;
 
     upgrades.slice(0, 3).forEach((upgrade, index) => {
@@ -39,7 +35,16 @@ function buyUpgrade(index) {
     }else {
         console.log('Pas assez de score pour acheter cette upgrade');
     }
-
 }
+
+// Add this script to your existing JavaScript file
+document.getElementById('toggleShopButton').addEventListener('click', function() {
+    const shop = document.getElementById('shop');
+    if (shop.style.display === 'none' || shop.style.display === '') {
+        shop.style.display = 'block';
+    } else {
+        shop.style.display = 'none';
+    }
+});
 
 document.addEventListener('DOMContentLoaded', renderUpgrades);
