@@ -1,3 +1,12 @@
+let score = 0 ;
+
+// Récupérer le score depuis localStorage s'il existe
+const savedScore = localStorage.getItem('score');
+if (savedScore !== null) {
+    score = parseInt(savedScore, 10); // Convertir la valeur en nombre
+    document.getElementById('score').textContent = score; // Mettre à jour l'affichage
+}
+
 document.getElementById('plankton').addEventListener('click', function() {
     const plankton = document.getElementById('plankton');
     if (plankton.classList.contains('clicked')) {
