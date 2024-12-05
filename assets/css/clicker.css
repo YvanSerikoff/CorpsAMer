@@ -1,0 +1,16 @@
+html {
+    background-color: #45aaf2;
+    background-image: url('assets/images/sand_pattern.png');
+    background-position: bottom;
+    background-repeat: repeat-x;
+    background-size: contain;
+}
+
+#plankton {
+    width: 200px;
+    cursor: pointer;
+}
+
+#score {
+    font-size: 24px;
+}
