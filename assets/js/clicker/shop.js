@@ -1,10 +1,16 @@
 const upgrades = [
-    { description: 'Increase click value +2', price: 100 },
-    { description: 'Increase click value +5', price: 1000 },
-    { description: 'Auto-clicker', price: 500 },
-    { description: 'Double click', price: 2500 },
-    { description: 'Increase click value +10', price: 10000 },
+    { id: 1, description: 'Increase click value +2', price: 100, effect: () => clickValue += 2 },
+    { id: 2, description: 'Increase click value +5', price: 1000, effect: () => clickValue += 5 },
+    { id: 3, description: 'Auto-clicker', price: 500, effect: () => startAutoClicker() },
+    { id: 4, description: 'Double click', price: 2500, effect: () => clickValue *= 2 },
+    { id: 5, description: 'Increase click value +10', price: 10000, effect: () => clickValue += 10 },
 ];
+
+let clickValue = 1;
+
+function applyUpgradeEffect(upgrade) {
+    upgrade.effect();
+}
 
 function renderUpgrades() {
     const shopTable = document.querySelector('#shop table');
@@ -35,11 +41,20 @@ function buyUpgrade(index) {
         upgrades.splice(index,1)
         // Handle the purchase logic here (e.g., deduct points, apply upgrade effect)
         console.log(`Purchased: ${upgrade.description}`);
+        applyUpgradeEffect(upgrade)
         renderUpgrades();
     }else {
         console.log('Pas assez de score pour acheter cette upgrade');
     }
 
+}
+
+function startAutoClicker() {
+    setInterval(() => {
+        score += clickValue;
+        scoreDisplay.textContent = score;
+        localStorage.setItem('score', score);
+    }, 1000);
 }
 
 document.addEventListener('DOMContentLoaded', renderUpgrades);

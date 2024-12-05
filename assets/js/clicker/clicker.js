@@ -15,7 +15,7 @@ document.getElementById('plankton').addEventListener('click', function() {
         plankton.classList.remove('clicked');
         void plankton.offsetWidth; // Force reflow to restart the animation
     }
-    score++;
+    score+= clickValue;
     document.getElementById('score').textContent = score;
     localStorage.setItem('score', score);
 
