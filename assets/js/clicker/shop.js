@@ -1,9 +1,9 @@
 const upgrades = [
-    { description: 'Increase click value', price: 100 },
-    { description: 'Double click speed', price: 200 },
+    { description: 'Increase click value +2', price: 100 },
+    { description: 'Increase click value +5', price: 1000 },
     { description: 'Auto-clicker', price: 500 },
-    { description: 'Triple click value', price: 300 },
-    { description: 'Quadruple click speed', price: 400 }
+    { description: 'Double click', price: 2500 },
+    { description: 'Increase click value +10', price: 10000 },
 ];
 
 function renderUpgrades() {
