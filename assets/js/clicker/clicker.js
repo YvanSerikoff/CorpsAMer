@@ -72,7 +72,7 @@ const scoreFinal = 10000;
     }
 
     newClickerButton.onclick = function() {
-        window.location.href = 'newClicker.html'; // Replace with the actual URL of the new clicker version
+        window.location.href = 'clickerCursed.html'; // Replace with the actual URL of the new clicker version
     }
 
     function changeBackground(body, jpg) {
