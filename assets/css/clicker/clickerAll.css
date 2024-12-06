@@ -10,13 +10,6 @@
     }
 }
 
-html{
-    background-image: url(../../images/clicker/bg1.jpg);
-    background-size: cover;
-    background-position: center;
-}
-
-
 body {
     display: flex;
     justify-content: center;
@@ -24,6 +17,9 @@ body {
     height: 100vh;
     margin: 0;
     flex-direction: column;
+    background-image: url(../../images/clicker/bg1.jpg);
+    background-size: cover;
+    background-position: center;
 }
 
 #progressBar {
