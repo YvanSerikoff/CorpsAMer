@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const platformGame = document.querySelector('.platform-game');
     const modal = document.getElementById('modal');
     const modalOverlay = document.getElementById('modal-overlay');
-    const openModalBtn = document.getElementById('open-modal-btn');
     const sprite = document.getElementById('sprite');
     const scoreElement = document.getElementById('score');
     const maxScoreElement = document.getElementById('max-score');
@@ -18,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const pauseGameBox = document.getElementById('pause-game-box');
     const resumeGameBtn = document.getElementById('resume-game-btn');
     const restartGameFromPauseBtn = document.getElementById('restart-game-from-pause-btn');
+    const progressBar = document.getElementById('progress-bar');
     let fallSpeed = 2; // Vitesse initiale de descente
     let spawnInterval = 1500; // Intervalle initial de 1.5 secondes
     const dechetColors = ['#778ca3', '#a5b1c2', '#4b6584', '#2f3640', '#353b48', '#1e272e']; // Couleurs aléatoires pour les déchets
@@ -41,6 +41,8 @@ document.addEventListener('DOMContentLoaded', () => {
     let dechetRecovered = 0;
     let dechetLost = 0;
     let fauneLost = 0;
+
+    pauseBtn.disabled = true; // Désactiver le bouton pause au début
 
     function getRandomSpeed(min, max, bias) {
         return Math.random() * (max - min) + min + bias;
@@ -146,9 +148,16 @@ document.addEventListener('DOMContentLoaded', () => {
         objects.forEach(object => platformGame.removeChild(object));
     }
 
+    function updateProgressBar() {
+        const totalDechets = dechetRecovered + dechetLost;
+        const percentage = totalDechets > 0 ? (dechetRecovered / totalDechets) * 100 : 0;
+        progressBar.style.width = `${percentage}%`;
+    }
+
     function showEndGameBox() {
         endGameBox.style.display = 'block';
         finalScore.textContent = score;
+        updateProgressBar();
         if (score < 0) {
             endGameMessage.textContent = "Vous avez perdu !";
         } else {
@@ -175,10 +184,13 @@ document.addEventListener('DOMContentLoaded', () => {
     function resumeGame() {
         gamePaused = false;
         hidePauseGameBox();
+        clearTimeout(spawnTimeout); // Annuler tout timeout existant
         gameInterval = setInterval(updateTime, 1000);
         const fallingObjects = document.querySelectorAll('.dechet, .faune');
         fallingObjects.forEach(fallingObject => updateFallingObject(fallingObject));
-        spawnFallingObjects();
+        spawnTimeout = setTimeout(() => {
+            spawnFallingObjects();
+        }, 1000); // Attendre 1 seconde avant de relancer le spawn des cercles
     }
 
     function startGame() {
@@ -192,9 +204,15 @@ document.addEventListener('DOMContentLoaded', () => {
         fauneLost = 0;
         scoreElement.textContent = score;
         timeElement.textContent = `01:00`;
+        removeAllObjects(); // Supprimer tous les cercles présents
+        spriteX = platformGame.offsetWidth / 2 - sprite.offsetWidth / 2; // Initialiser le sprite au centre horizontalement
+        spriteY = platformGame.offsetHeight / 2 - sprite.offsetHeight / 2; // Initialiser le sprite au centre verticalement
+        sprite.style.left = `${spriteX}px`;
+        sprite.style.top = `${spriteY}px`;
         gameInterval = setInterval(updateTime, 1000);
         spawnFallingObjects();
         increaseDifficulty();
+        pauseBtn.disabled = false; // Activer le bouton pause lorsque le jeu commence
     }
 
     function checkCollision() {
@@ -202,6 +220,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dechets.forEach(dechet => {
             const dechetRect = dechet.getBoundingClientRect();
             const spriteRect = sprite.getBoundingClientRect();
+            const rocksRect = document.getElementById('rocks').getBoundingClientRect();
 
             if (
                 spriteRect.left < dechetRect.left + dechetRect.width &&
@@ -218,15 +237,31 @@ document.addEventListener('DOMContentLoaded', () => {
                     dechetRecovered++;
                 }
                 scoreElement.textContent = score;
+                updateProgressBar();
+            }
+
+            // Vérifier la collision avec les rochers
+            if (dechetRect.bottom > rocksRect.top) {
+                platformGame.removeChild(dechet);
+                if (dechet.classList.contains('dechet')) {
+                    score -= 2; // Perdre 2 points si un déchet touche les rochers
+                    dechetLost++;
+                } else if (dechet.classList.contains('faune')) {
+                    score += 1; // Gagner 1 point si la faune touche les rochers
+                    fauneSaved++;
+                }
+                scoreElement.textContent = score;
             }
         });
     }
 
-    openModalBtn.addEventListener('click', () => {
-        modal.style.display = 'block';
-        modalOverlay.style.display = 'block';
-        instructionModal.style.display = 'block';
-    });
+    function togglePauseResume() {
+        if (gamePaused) {
+            resumeGame();
+        } else {
+            pauseGame();
+        }
+    }
 
     startGameBtn.addEventListener('click', () => {
         instructionModal.style.display = 'none';
@@ -254,7 +289,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     pauseBtn.addEventListener('click', () => {
-        pauseGame();
+        if (!pauseBtn.disabled) {
+            togglePauseResume();
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.code === 'Space' && !pauseBtn.disabled) {
+            e.preventDefault(); // Empêcher le défilement de la page
+            togglePauseResume();
+        }
     });
 
     platformGame.addEventListener('mousemove', (e) => {
