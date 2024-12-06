@@ -67,10 +67,6 @@ const scoreFinal = 10000;
         }
     }
 
-    indexButton.onclick = function() {
-        window.location.href = 'index.html';
-    }
-
     newClickerButton.onclick = function() {
         window.location.href = 'clickerCursed.html'; // Replace with the actual URL of the new clicker version
     }
@@ -81,20 +77,16 @@ const scoreFinal = 10000;
 
     plankton.classList.add('clicked');
 
-    const resetButton = document.getElementById('reset-button');
-    resetButton.addEventListener('click', () => {
-        score = 0; // Reset score
-        totalScore = 0; // Reset totalScore
-        scoreDisplay.textContent = score; // Update display
-
-        totalScoreDisplay.textContent = totalScore; // Update display
-        progressBar.value = totalScore;
-        clickValue = 1 ;
-        changeBackground(body, 'assets/images/clicker/bg1.jpg');
-        // Reset progress bar
-        localStorage.removeItem('score'); // Remove score from localStorage
-
-        localStorage.removeItem('totalScore'); // Remove totalScore from localStorage
-        resetUpgrades();
-    });
-document.getElementById('resetButton').addEventListener('click', resetUpgrades);
+const resetButton = document.getElementById('reset-button');
+resetButton.addEventListener('click', () => {
+    score = 0; // Reset score
+    totalScore = 0; // Reset totalScore
+    scoreDisplay.textContent = score; // Update display
+    totalScoreDisplay.textContent = totalScore; // Update display
+    progressBar.value = totalScore; // Reset progress bar
+    clickValue = 1; // Reset click value
+    changeBackground(body, 'assets/images/clicker/bg1.jpg'); // Reset background
+    localStorage.removeItem('score'); // Remove score from localStorage
+    localStorage.removeItem('totalScore'); // Remove totalScore from localStorage
+    resetUpgrades(); // Reset upgrades
+});
