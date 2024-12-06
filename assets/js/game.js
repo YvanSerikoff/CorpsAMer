@@ -5,6 +5,10 @@ let activePointIndex = -1;
 
 const pointsPositions = [];
 
+const popup = document.querySelector(".popup");
+
+const iframe = document.querySelector("iframe");
+
 const pointsDetails = {
   head: { name: "Tête", exec: startQuiz },
   throat: { name: "Gorge", exec: startSecheresse },
@@ -60,10 +64,30 @@ document.body.addEventListener("keydown", (e) => {
 
 highlightPoint(0);
 
-// Quiz
+window.addEventListener("message", (event) => {
+  if (event.data === "closeWindow") {
+    iframe.src = "";
+
+    iframe.style.display = "none";
+  }
+});
+
+function closePopup() {
+  const popup = document.querySelector(".popup");
+
+  popup.style.display = "none";
+
+  iframe.src = "";
+}
 
 function startQuiz() {
   console.log("Quiz started");
+
+  popup.style.display = "block";
+
+  iframe.src = "quiz.html";
+
+  iframe.style.display = "block";
 }
 
 function startSecheresse() {
