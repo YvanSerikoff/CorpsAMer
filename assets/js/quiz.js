@@ -96,12 +96,12 @@ validateButton.addEventListener("click", () => {
       // Fin du quiz
       quizContainer.innerHTML = `<h2>Quiz terminé !</h2><p>Votre score final est : ${score}</p><button>Fermer</button>`;
 
-      document.querySelector("button").addEventListener("click", close);
+      document.querySelector("button").addEventListener("click", closeWindow);
     }
   }
 });
 
-function close() {
+function closeWindow() {
   window.parent.postMessage("closeWindow", "*");
 }
 

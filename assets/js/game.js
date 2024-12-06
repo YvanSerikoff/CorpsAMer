@@ -15,8 +15,8 @@ const pointsDetails = {
   head: { name: "Tête", exec: startQuiz },
   throat: { name: "Gorge", exec: startSecheresse },
   heart: { name: "Cœur", exec: startPeche },
-  lung: { name: "Poumon", exec: startPeche },
-  liver: { name: "Foie", exec: startPeche },
+  lung: { name: "Poumon", exec: startPoumon },
+  liver: { name: "Foie", exec: startFoie },
 };
 
 const dialogPoints = {
@@ -103,6 +103,26 @@ function startQuiz() {
   popup.style.display = "block";
 
   iframe.src = "quiz.html";
+
+  iframe.style.display = "block";
+}
+
+function startPoumon() {
+  console.log("Lung started");
+
+  popup.style.display = "block";
+
+  iframe.src = "clicker.html";
+
+  iframe.style.display = "block";
+}
+
+function startFoie() {
+  console.log("Lung started");
+
+  popup.style.display = "block";
+
+  iframe.src = "clicker.html";
 
   iframe.style.display = "block";
 }
