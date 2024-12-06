@@ -14,6 +14,7 @@ const pointsDetails = {
   throat: { name: "Gorge", exec: startSecheresse },
   heart: { name: "Cœur", exec: startPeche },
   lung: { name: "Poumon", exec: startPeche },
+  liver: { name: "Foie", exec: startPeche },
 };
 
 points.forEach((point) => {
