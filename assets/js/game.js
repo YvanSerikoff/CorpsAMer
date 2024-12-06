@@ -16,6 +16,7 @@ const pointsDetails = {
   throat: { name: "Gorge", exec: startSecheresse },
   heart: { name: "Cœur", exec: startPeche },
   lung: { name: "Poumon", exec: startPeche },
+  liver: { name: "Foie", exec: startPeche },
 };
 
 const dialogPoints = {
@@ -23,6 +24,7 @@ const dialogPoints = {
     throat: "Vous avez une sensation de sécheresse dans la gorge ?",
     heart: "Vous avez des problèmes de cœur ?",
     lung: "Vous avez des problèmes de poumon ?",
+    liver: "Vous avez des problèmes de foie ?",
 }
 
 points.forEach((point) => {
