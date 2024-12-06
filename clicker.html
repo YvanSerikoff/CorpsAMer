@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Plankton Clicker</title>
+    <link rel="stylesheet" href="assets/css/clicker/mainClicker.css">
     <link rel="stylesheet" href="assets/css/clicker/clickerAll.css">
     <link rel="stylesheet" href="assets/css/clicker/clicker.css">
     <link rel="stylesheet" href="assets/css/clicker/shop.css">
@@ -11,7 +12,8 @@
 <body>
 <progress id="progressBar" value="0" max="10000"></progress>
 <section id="toggle">
-    <button id="toggleButton">Toggle</button>
+    <button id="toggleButton">Shop</button>
+    <button id="indexButton">Index</button>
     <p>Bulles : <span id="score">0</span></p>
 </section>
 <section id="shop">
@@ -47,7 +49,6 @@
     <div class="modal-content">
         <span class="close">&times;</span>
         <p>Congratulations! You have reached the final score!</p>
-        <button id="indexButton">Go to Index</button>
         <button id="newClickerButton">New Clicker Version</button>
     </div>
 </div>
