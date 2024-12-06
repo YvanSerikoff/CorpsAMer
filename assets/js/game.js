@@ -9,13 +9,21 @@ const popup = document.querySelector(".popup");
 
 const iframe = document.querySelector("iframe");
 
+let actualPoint = "head";
+
 const pointsDetails = {
   head: { name: "Tête", exec: startQuiz },
   throat: { name: "Gorge", exec: startSecheresse },
   heart: { name: "Cœur", exec: startPeche },
   lung: { name: "Poumon", exec: startPeche },
-  liver: { name: "Foie", exec: startPeche },
 };
+
+const dialogPoints = {
+    head: "Bonjour, je suis le pingouin, je suis là pour vous aider",
+    throat: "Vous avez une sensation de sécheresse dans la gorge ?",
+    heart: "Vous avez des problèmes de cœur ?",
+    lung: "Vous avez des problèmes de poumon ?",
+}
 
 points.forEach((point) => {
   const { x, y } = point.getBoundingClientRect();
@@ -59,7 +67,8 @@ document.body.addEventListener("keydown", (e) => {
   } else if (e.key === "Enter") {
     const point = points[activePointIndex];
 
-    pointsDetails[point.getAttribute("data-name")].exec();
+    pinguinSpeak(dialogPoints[point.getAttribute("data-name")]);
+    actualPoint = point.getAttribute("data-name");
   }
 });
 
@@ -81,6 +90,11 @@ function closePopup() {
   iframe.src = "";
 }
 
+function launchGame() {
+  pointsDetails[actualPoint].exec();
+  document.querySelector(".background-animation").style.display = "none";
+}
+
 function startQuiz() {
   console.log("Quiz started");
 
@@ -98,3 +112,12 @@ function startSecheresse() {
 function startPeche() {
   console.log("Peche started");
 }
+
+function pinguinSpeak(message) {
+  const text = document.querySelector(".text-speech p");
+  text.innerHTML = message;
+  document.querySelector(".background-animation").style.display = "flex";
+}
+document.getElementById("close-modal").addEventListener("click", () => {
+  document.querySelector(".background-animation").style.display = "none";
+});

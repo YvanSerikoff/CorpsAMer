@@ -7,10 +7,7 @@
     <link rel="stylesheet" href="assets/css/game.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Modak&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Modak&family=Sour+Gummy:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
     <title>Corps à Mer</title>
   </head>
   <body>
@@ -121,13 +118,7 @@
             r="10"
             data-name="lung"
           ></circle>
-          <circle
-            id="point-liver"
-            cx="300"
-            cy="460"
-            r="10"
-            data-name="liver"
-          ></circle>
+          <!-- <circle id="point-center" cx="338" cy="420" r="10" fill="red" data-name="center"></circle> -->
         </svg>
 
         <div class="current"></div>
@@ -137,7 +128,10 @@
           <div class="text-speech">
             <h1>Pinguin Speak</h1>
             <p></p>
-            <button id="close-modal">Fermer</button>
+            <div style="display: flex; flex-direction: row;justify-content: center">
+                <button onclick="launchGame()" style="margin-right: 10px">Jouer</button>
+                <button id="close-modal">Fermer</button>
+            </div>
           </div>
           <img src="assets/images/pinguin.png" class="pinguin" alt="pinguin" />
         </div>
@@ -151,15 +145,5 @@
 
     <script src="assets/js/main.js"></script>
     <script src="assets/js/game.js"></script>
-    <script>
-      function pinguinSpeak(message) {
-        const text = document.querySelector(".text-speech p");
-        text.innerHTML = message;
-        document.querySelector(".background-animation").style.display = "flex";
-      }
-      document.getElementById("close-modal").addEventListener("click", () => {
-        document.querySelector(".background-animation").style.display = "none";
-      });
-    </script>
   </body>
 </html>
