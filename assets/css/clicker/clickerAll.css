@@ -49,6 +49,10 @@ body {
 }
 
 @media (max-width: 768px) {
+    #toggle{
+        top:3em;
+    }
+
     #shop {
         display: none; /* Hide shop by default on small screens */
     }
