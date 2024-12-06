@@ -62,15 +62,16 @@ function buyUpgrade(index) {
     }
 }
 
-// Add this script to your existing JavaScript file
-document.getElementById('toggleShopButton').addEventListener('click', function() {
+    const toggleButton = document.getElementById('toggleButton');
     const shop = document.getElementById('shop');
-    if (shop.style.display === 'none' || shop.style.display === '') {
-        shop.style.display = 'block';
-    } else {
-        shop.style.display = 'none';
-    }
-});
+
+    toggleButton.addEventListener('click', () => {
+        if (shop.style.display === 'none' || shop.style.display === '') {
+            shop.style.display = 'block';
+        } else {
+            shop.style.display = 'none';
+        }
+    });
 
 function startAutoClicker() {
     if (autoClickerInterval !== null) return; // Ne pas démarrer plusieurs auto-clickers

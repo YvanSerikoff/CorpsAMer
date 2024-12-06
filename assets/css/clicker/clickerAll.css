@@ -37,32 +37,19 @@ body {
     align-items: center;
 }
 
-#shop {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-#toggleShopButton {
-    display: none; /* Hide button by default */
+#toggle {
     position: fixed;
-    top: 4em;
+    top: 10px;
     right: 10px;
-    z-index: 1000;
-    padding: 10px 20px;
     background-color: #fff;
+    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 @media (max-width: 768px) {
     #shop {
         display: none; /* Hide shop by default on small screens */
-    }
-
-    #toggleShopButton {
-        display: block; /* Show button on small screens */
     }
 }
