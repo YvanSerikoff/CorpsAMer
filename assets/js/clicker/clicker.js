@@ -1,11 +1,18 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    const plankton = document.getElementById('plankton');
-    const scoreDisplay = document.getElementById('score');
-    const totalScoreDisplay = document.getElementById('totalScore');
-    const progressBar = document.getElementById('progressBar');
+const plankton = document.getElementById('plankton');
+const scoreDisplay = document.getElementById('score');
+const totalScoreDisplay = document.getElementById('totalScore');
+const progressBar = document.getElementById('progressBar');
+const modal = document.getElementById('winModal');
+const span = document.getElementsByClassName('close')[0];
+const indexButton = document.getElementById('indexButton');
+const newClickerButton = document.getElementById('newClickerButton');
 
-    let score = 500;
-    let totalScore = 0;
+let score = 500;
+let totalScore = 0;
+const scoreFinal = 1000000;
+
+document.addEventListener('DOMContentLoaded', (event) => {
+
 
     // Retrieve score and totalScore from localStorage if they exist
     const savedScore = localStorage.getItem('score');
@@ -34,7 +41,30 @@ document.addEventListener('DOMContentLoaded', (event) => {
         localStorage.setItem('totalScore', totalScore);
 
         plankton.classList.add('clicked');
+
+        if(score >= scoreFinal){
+            modal.style.display ='block';
+        }
     });
+
+    span.onclick = function (){
+        modal.style.display ='none';
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+
+    indexButton.onclick = function() {
+        window.location.href = 'index.html';
+    }
+
+    newClickerButton.onclick = function() {
+        window.location.href = 'newClicker.html'; // Replace with the actual URL of the new clicker version
+    }
+
 
     const resetButton = document.getElementById('reset-button');
     resetButton.addEventListener('click', () => {
@@ -42,8 +72,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
         totalScore = 0; // Reset totalScore
         scoreDisplay.textContent = score; // Update display
         totalScoreDisplay.textContent = totalScore; // Update display
-        progressBar.value = totalScore; // Reset progress bar
+        progressBar.value = totalScore;
+        clickValue = 1 ;
+        // Reset progress bar
         localStorage.removeItem('score'); // Remove score from localStorage
         localStorage.removeItem('totalScore'); // Remove totalScore from localStorage
+        resetUpgrades();
     });
 });
