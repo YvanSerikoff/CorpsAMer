@@ -1,4 +1,4 @@
-const upgrades = [
+const originalUpgrades = [
     { id: 1, description: 'Increase click value +2', price: 100, effect: () => clickValue += 2 },
     { id: 2, description: 'Increase click value +5', price: 1000, effect: () => clickValue += 5 },
     { id: 3, description: 'Auto-clicker', price: 500, effect: () => startAutoClicker() },
@@ -6,10 +6,17 @@ const upgrades = [
     { id: 5, description: 'Increase click value +10', price: 10000, effect: () => clickValue += 10 },
 ];
 
+let upgrades = [...originalUpgrades];
 let clickValue = 1;
 
 function applyUpgradeEffect(upgrade) {
     upgrade.effect();
+}
+
+function resetUpgrades() {
+    upgrades = [...originalUpgrades];
+    clickValue = 1;
+    renderUpgrades();
 }
 
 function renderUpgrades() {
