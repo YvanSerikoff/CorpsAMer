@@ -14,7 +14,7 @@ let actualPoint = "head";
 const pointsDetails = {
   head: { name: "Tête", exec: startQuiz },
   throat: { name: "Gorge", exec: startSecheresse },
-  heart: { name: "Cœur", exec: startPeche },
+  heart: { name: "Cœur", exec: startPied },
   lung: { name: "Poumon", exec: startPoumon },
   liver: { name: "Foie", exec: startFoie },
 };
@@ -123,6 +123,17 @@ function startFoie() {
   popup.style.display = "block";
 
   iframe.src = "liver.html";
+
+  iframe.style.display = "block";
+}
+
+
+function startPied() {
+  console.log("Pied started");
+
+  popup.style.display = "block";
+
+  iframe.src = "captcha.html";
 
   iframe.style.display = "block";
 }
