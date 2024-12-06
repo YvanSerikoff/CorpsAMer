@@ -126,6 +126,16 @@
 
         <div class="current"></div>
       </div>
+      <div class="background-animation">
+        <div>
+          <div class="text-speech">
+            <h1>Pinguin Speak</h1>
+            <p></p>
+            <button id="close-modal">Fermer</button>
+          </div>
+          <img src="assets/images/pinguin.png" class="pinguin" alt="pinguin" />
+        </div>
+      </div>
 
       <div class="popup">
         <iframe frameborder="0"></iframe>
@@ -135,5 +145,15 @@
 
     <script src="assets/js/main.js"></script>
     <script src="assets/js/game.js"></script>
+    <script>
+      function pinguinSpeak(message) {
+        const text = document.querySelector(".text-speech p");
+        text.innerHTML = message;
+        document.querySelector(".background-animation").style.display = "flex";
+      }
+      document.getElementById("close-modal").addEventListener("click", () => {
+        document.querySelector(".background-animation").style.display = "none";
+      });
+    </script>
   </body>
 </html>

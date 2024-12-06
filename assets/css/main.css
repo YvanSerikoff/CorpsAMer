@@ -41,7 +41,6 @@ button {
   font-size: 1.5em;
   margin-top: 1rem;
   padding: 0.5rem 1rem;
-  cursor: pointer;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s, opacity 0.2s;
 }
@@ -49,4 +48,92 @@ button {
 button:hover {
   opacity: 0.8;
   transform: scale(1.05);
+}
+
+.pinguin {
+  animation: 1s pinguin ease-out;
+}
+
+@keyframes pinguin {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(-20px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.text-speech {
+  animation: 3s fadeIn;
+  background-color:#9E6B48;
+  padding: 20px;
+  border-radius: 25px;
+}
+
+.text-speech h1 {
+  color:white;
+  margin: 0 10px;
+}
+
+.text-speech button {
+  background-color: white;
+  color: black;
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.background-animation {
+  animation: 3s background;
+  background: rgba(128, 128, 128, 0.5);
+  position:relative;
+  display:none;
+  justify-content:end;
+  align-items: center;
+  width: 100%;
+  height: 100%
+}
+
+.background-animation div {
+  display: flex;
+  text-align:center;
+  margin: 10px;
+  flex-direction: column;
+  align-items: center;
+  width: 38rem;
+}
+
+.background-animation div img {
+  width: 10rem;
+  height: 15rem
+}
+
+@keyframes background {
+  0% {
+    background: rgba(128, 128, 128, 0);
+  }
+  50% {
+    background: rgba(128, 128, 128, 0);
+  }
+  100% {
+    background: rgba(128, 128, 128, 0.5);
+  }
 }
