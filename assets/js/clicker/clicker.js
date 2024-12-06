@@ -6,13 +6,11 @@ const modal = document.getElementById('winModal');
 const span = document.getElementsByClassName('close')[0];
 const indexButton = document.getElementById('indexButton');
 const newClickerButton = document.getElementById('newClickerButton');
+const body = document.querySelector('body');
 
 let score = 500;
 let totalScore = 0;
 const scoreFinal = 1000000;
-
-document.addEventListener('DOMContentLoaded', (event) => {
-
 
     // Retrieve score and totalScore from localStorage if they exist
     const savedScore = localStorage.getItem('score');
@@ -42,6 +40,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
         plankton.classList.add('clicked');
 
+        if (totalScore >= 200000) changeBackground(body, 'assets/images/clicker/bg2.jpg');
+        if (totalScore >= 300000) changeBackground(body, 'assets/images/clicker/bg3.jpg');
+        if (totalScore >= 400000) changeBackground(body, 'assets/images/clicker/bg4.jpg');
+
         if(score >= scoreFinal){
             modal.style.display ='block';
         }
@@ -52,7 +54,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     window.onclick = function(event) {
-        if (event.target == modal) {
+        if (event.target === modal) {
             modal.style.display = 'none';
         }
     }
@@ -65,12 +67,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
         window.location.href = 'newClicker.html'; // Replace with the actual URL of the new clicker version
     }
 
-    if (totalScore >= 20000) changeBackground(body, 'assets/images/clicker/bg2.jpg');
-    if (totalScore >= 30000) changeBackground(body, 'assets/images/clicker/bg3.jpg');
-    if (totalScore >= 40000) changeBackground(body, 'assets/images/clicker/bg4.jpg');
+    function changeBackground(body, jpg) {
+        body.style.backgroundImage = `url("${jpg}")`;
+    }
 
     plankton.classList.add('clicked');
-});
 
     const resetButton = document.getElementById('reset-button');
     resetButton.addEventListener('click', () => {
@@ -80,6 +81,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         totalScoreDisplay.textContent = totalScore; // Update display
         progressBar.value = totalScore;
         clickValue = 1 ;
+        changeBackground(body, 'assets/images/clicker/bg1.jpg');
         // Reset progress bar
         localStorage.removeItem('score'); // Remove score from localStorage
         localStorage.removeItem('totalScore'); // Remove totalScore from localStorage
