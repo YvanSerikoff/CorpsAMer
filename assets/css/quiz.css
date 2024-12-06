@@ -1,0 +1,136 @@
+body {
+  overflow: auto;
+}
+
+.cloud {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #f0f0f038;
+  border-radius: 50px;
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  display: none;
+}
+
+.quiz-container {
+  position: relative;
+  margin: 20px auto;
+  padding: 20px 50px;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 50px;
+  background: #f0f0f038;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+  display: none;
+}
+
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.quiz-label {
+  background: #f0f0f038;
+  padding: 5px 10px;
+  /* border: 2px solid #ccc; */
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.score-label {
+  background: #f0f0f038;
+  padding: 5px 10px;
+  /* border: 2px solid #ccc; */
+  border-radius: 5px;
+  font-weight: bold;
+  position: relative;
+}
+
+.multiplier {
+  font-size: 0.8em;
+  color: white;
+  margin-top: 5px;
+}
+
+.multiplier.green {
+  color: #a3ffb9;
+}
+
+.options-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .options-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.option {
+  padding: 10px 20px;
+  border-radius: 12px;
+  background: white;
+  font-size: 1em;
+  cursor: pointer;
+  text-align: center;
+}
+
+.option:hover {
+  background: #e0e0e0;
+}
+
+.option.selected {
+  background: #d0e0f0;
+  border-color: #007bff;
+}
+
+.option.correct {
+  background: #d4edda;
+  border-color: #28a745;
+  color: #22903b;
+}
+
+.option.incorrect {
+  background: #f8d7da;
+  border-color: #dc3545;
+  color: #a9303c;
+}
+
+.validate-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.validate-button:hover {
+  background: #0056b3;
+}
+
+.explanation {
+  margin-top: 20px;
+  padding: 20px;
+  background: #f0f0f02d;
+  border-radius: 5px;
+  /* border: 1px solid #ccc; */
+}
+
+.score {
+  margin-top: 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+}

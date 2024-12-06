@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empty Page with Button</title>
+    <link rel="stylesheet" href="assets/css/foie/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Modak&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="modal-overlay" id="modal-overlay"></div>
+    <div class="modal" id="modal">
+        <div class="score-time-container">
+            <div class="info-box">
+                Score: <span id="score">0</span> | Max Score: <span id="max-score">0</span> | Temps: <span id="time">00:00</span>
+            </div>
+        </div>
+        <div class="platform-game">
+            <div class="sprite" id="sprite"></div> <!-- Ajouter le sprite -->
+            <div class="rocks" id="rocks"></div> <!-- Ajouter les rochers -->
+        </div>
+        <button id="pause-btn">Pause</button>
+    </div>
+    <div class="instruction-modal" id="instruction-modal">
+        <div class="instruction-content">
+            <p>Bienvenue dans le jeu! Votre objectif est de récupérer les déchets (cercles gris) et d'éviter la faune (cercles colorés). Utilisez votre souris pour déplacer le sprite et collecter les objets. Ne laissez pas les déchets toucher le fond et ne capturez pas la faune. L'océan est comme un foie pour notre planète, il protège l'environnement. Cependant, il est en danger à cause des déchets, et seuls nous, les humains, pouvons traiter cette maladie en éliminant les déchets. Malheureusement, avec un manque d'action, seul ce pingouin essaie de protéger l'océan. Bonne chance!</p>
+            <button id="start-game-btn">Commencer le jeu</button>
+        </div>
+    </div>
+    <div class="end-game-box" id="end-game-box">
+        <h2 id="end-game-message"></h2>
+        <p>Score: <span id="final-score"></span></p>
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progress-bar"></div>
+        </div>
+        <button id="restart-game-btn">Recommencer</button>
+        <button id="continue-game-btn">Continuer</button>
+    </div>
+    <div class="pause-game-box" id="pause-game-box">
+        <h2>Jeu en pause</h2>
+        <button id="resume-game-btn">Continuer</button>
+        <button id="restart-game-from-pause-btn">Recommencer</button>
+    </div>
+    <script src="assets/js/foie/script.js"></script>
+    <script src="assets/js/foie/liver.js"></script>
+</body>
+</html>
