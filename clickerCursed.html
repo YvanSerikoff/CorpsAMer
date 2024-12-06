@@ -5,40 +5,42 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Plankton Clicker</title>
     <link rel="stylesheet" href="assetsCursed/css/clicker/clickerAllCursed.css">
-    <link rel="stylesheet" href="assetsCursed/css/clicker/clickerAllCursed.css">
+    <link rel="stylesheet" href="assetsCursed/css/clicker/clickerCursed.css">
     <link rel="stylesheet" href="assetsCursed/css/clicker/shopCursed.css">
 </head>
 <body>
-<progress id="progressBar" value="0" max="1000000"></progress>
-<button id="toggleShopButton">Toggle Shop</button>
-<section id="shop">
-  <h2>Shop</h2>
-  <table>
-    <tr>
-      <th>Upgrades</th>
-    </tr>
-    <tr>
-      <td>Increase click value</td>
-      <td>100 points</td>
-      <td><button id="upgrade1">Buy</button></td>
-    </tr>
-    <tr>
-      <td>Double click speed</td>
-      <td>200 points</td>
-      <td><button id="upgrade2">Buy</button></td>
-    </tr>
-    <tr>
-      <td>Auto-clicker</td>
-      <td>500 points</td>
-      <td><button id="upgrade3">Buy</button></td>
-    </tr>
-  </table>
+<progress id="progressBar" value="0" max="10000"></progress>
+<section id="toggle">
+    <button id="toggleButton">Toggle</button>
+    <button id="reset-button">Reset button</button>
     <p>Bulles : <span id="score">0</span></p>
 </section>
+<section id="shop">
+    <h2>Shop</h2>
+    <table>
+        <tr>
+            <th>Upgrades</th>
+        </tr>
+        <tr>
+            <td>Increase click value</td>
+            <td>100 points</td>
+            <td><button id="upgrade1">Buy</button></td>
+        </tr>
+        <tr>
+            <td>Double click speed</td>
+            <td>200 points</td>
+            <td><button id="upgrade2">Buy</button></td>
+        </tr>
+        <tr>
+            <td>Auto-clicker</td>
+            <td>500 points</td>
+            <td><button id="upgrade3">Buy</button></td>
+        </tr>
+    </table>
+</section>
 <section id="Clicker">
-    <img alt="Plankton" id="plankton" src="assetsCursed/images/clicker/planton_clicker.png">
+    <img alt="Plankton" id="plankton" src="assets/images/clicker/planton_clicker.png">
     <span id="totalScore">0</span>
-    <button id="reset-button">Reset button</button>
 </section>
 
 <div id="winModal" class="modal">

@@ -1,4 +1,5 @@
 #plankton {
+    position: absolute;
     width: 25em;
     cursor: pointer;
     transition: transform 0.5s;
