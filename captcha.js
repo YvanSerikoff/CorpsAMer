@@ -67,8 +67,8 @@ for (let i = 1; i <= numFish; i++) {
     // Positionnement aléatoire sans superposition
     let attempts = 0;
     do {
-        fishContainer.style.top = `${Math.random() * 3233 - 50}px`; // Ajuster pour la nouvelle hauteur
-        fishContainer.style.left = `${Math.random() * 6500 - 50}px`; // Ajuster pour la nouvelle largeur
+        fishContainer.style.top = `${Math.random() * (3253 - 150) + 50}px`; // Ajuster pour la nouvelle hauteur
+        fishContainer.style.left = `${Math.random() * (6500 - 150) + 50}px`; // Ajuster pour la nouvelle largeur
         fishContainer.style.transform = `translate(-50%, -50%) rotate(${Math.random() * 360}deg)`;
         attempts++;
     } while (isOverlapping(fishContainer, existingFishes) && attempts < 100);
@@ -85,8 +85,40 @@ for (let i = 1; i <= numFish; i++) {
 
 // Sélectionner un poisson aléatoire parmi ceux générés et l'afficher en haut à gauche de la page en épinglé
 const randomIndex = Math.floor(Math.random() * existingFishes.length);
-pinnedFish = existingFishes[randomIndex];
+const originalPinnedFish = existingFishes[randomIndex];
+pinnedFish = originalPinnedFish.cloneNode(true);
 pinnedFish.style.position = 'fixed';
-pinnedFish.style.top = '50px'; // Ajouter un espace de 50px du bord supérieur
-pinnedFish.style.left = '50px'; // Ajouter un espace de 20px du bord gauche
+pinnedFish.style.top = '100px'; // Ajouter un espace de 50px du bord supérieur
+pinnedFish.style.left = '100px'; // Ajouter un espace de 20px du bord gauche
 pinnedFish.style.zIndex = '1000';
+pinnedFish.style.setProperty('--gradient', originalPinnedFish.style.getPropertyValue('--gradient'));
+document.body.appendChild(pinnedFish);
+
+// Fonction pour afficher une phrase aléatoire dans un popup
+function showRandomFishPhrase() {
+    const randomIndex = Math.floor(Math.random() * fishPhrases.length);
+    const randomPhrase = fishPhrases[randomIndex];
+
+    // Créer le conteneur du popup
+    const popup = document.createElement('div');
+    popup.className = 'popup';
+
+    // Ajouter le texte
+    const text = document.createElement('p');
+    text.textContent = randomPhrase;
+    popup.appendChild(text);
+
+    // Ajouter un bouton pour fermer le popup
+    const closeButton = document.createElement('button');
+    closeButton.textContent = 'Fermer';
+    closeButton.addEventListener('click', () => {
+        popup.remove(); // Supprimer le popup lorsqu'on clique sur "Fermer"
+    });
+    popup.appendChild(closeButton);
+
+    // Ajouter le popup au document
+    document.body.appendChild(popup);
+}
+
+// Appeler la fonction au chargement de la page
+document.addEventListener('DOMContentLoaded', showRandomFishPhrase);

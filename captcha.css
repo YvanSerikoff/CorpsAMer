@@ -11,6 +11,8 @@ body {
 /* captcha.css */
 .container {
     position: absolute;
+    top: 0;
+    left: 0;
     background-image: url('ocean.png');
     background-size: 100% 100%; /* Assurez-vous que l'image couvre toute la zone */
     background-position: center;
@@ -28,7 +30,7 @@ body {
     z-index: 0;
 }
 
-.foreground .fish-container {
+ .fish-container {
     position: absolute;
     overflow: hidden;
     border-radius: 50%; /* Ajout de cette ligne pour arrondir les conteneurs */
@@ -39,7 +41,7 @@ body {
 }
 
 
-.foreground .fish-container img {
+ .fish-container img {
     display: block;
     width: 100%;
     height: auto;
@@ -47,7 +49,7 @@ body {
     z-index: 1;
 }
 
-.foreground .fish-container::before {
+ .fish-container::before {
     content: '';
     position: absolute;
     top: 0;
@@ -57,4 +59,42 @@ body {
     z-index: 2;
     pointer-events: none;
     background: var(--gradient);
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid #007bff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    width: 80%;
+    max-width: 400px;
+    padding: 20px;
+    z-index: 2000;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333;
+}
+
+.popup p {
+    margin: 0 0 20px;
+}
+
+.popup button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.popup button:hover {
+    background-color: #0056b3;
 }
