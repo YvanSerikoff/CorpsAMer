@@ -1,0 +1,19 @@
+#shop h2{
+    color: white;
+    font-size: 2em;
+    margin-top: 20px;
+    text-align: center;
+}
+
+table {
+    width: 100%;
+
+    margin-top: 20px;
+    border-radius: 10px; /* This should apply rounded corners */
+    border: 1em solid white; /* Border style */
+}
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}

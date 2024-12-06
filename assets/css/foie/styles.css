@@ -1,0 +1,215 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+}
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+}
+.modal {
+    display: none;
+    position: fixed; /* Revenir à fixed */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(to bottom, #45aaf2, #3867d6); /* Fondu de couleur */
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    width: 90%;
+    height: 80%;
+    border-radius: 15px; 
+}
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+.platform-game {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.score-time-container {
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.info-box {
+    background-color: rgba(128, 128, 128, 0.5); /* Grisé transparent */
+    color: white;
+    padding: 10px;
+    border-radius: 10px; /* Arrondir encore plus la box */
+    font-size: 18px;
+    font-family: 'Modak', cursive; /* Utiliser la police Modak */
+}
+
+.falling-object {
+    position: absolute;
+    width: 20px; /* Taille du cercle */
+    height: 20px; /* Taille du cercle */
+    background-color: #e9ec4b; /* Couleur du cercle */
+    border-radius: 50%; /* Faire un cercle */
+}
+
+.dechet {
+    position: absolute;
+    width: 20px; /* Taille du cercle */
+    height: 20px; /* Taille du cercle */
+    border-radius: 50%; /* Faire un cercle */
+}
+
+.faune {
+    position: absolute;
+    width: 20px; /* Taille du cercle */
+    height: 20px; /* Taille du cercle */
+    border-radius: 50%; /* Faire un cercle */
+}
+
+.triangle {
+    display: none; /* Supprimer le triangle turquoise */
+}
+
+.mouse-rectangle {
+    display: none; /* Supprimer le rectangle */
+}
+
+.mouse-triangle {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 20px solid white;
+    pointer-events: none; /* Pour que le triangle ne bloque pas les événements de la souris */
+}
+
+.sprite {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background: url('../../images/foie/pinguin.png') no-repeat center center;
+    background-size: contain;
+    pointer-events: none; /* Pour que le sprite ne bloque pas les événements de la souris */
+}
+
+#instruction-modal {
+    display: none;
+    position: absolute; /* Changer de fixed à absolute */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+    width: 80%;
+    border-radius: 10px;
+    text-align: center;
+}
+
+#instruction-overlay {
+    display: none;
+    position: absolute; /* Changer de fixed à absolute */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+#start-game-btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+#pause-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+.instruction-modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+    width: 300px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.instruction-content {
+    margin-bottom: 20px;
+}
+
+.end-game-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+    width: 300px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.end-game-box h2 {
+    margin-bottom: 20px;
+}
+
+.end-game-box p {
+    margin-bottom: 20px;
+}
+
+.pause-game-box {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 20px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+    width: 300px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.pause-game-box h2 {
+    margin-bottom: 20px;
+}
+
+.pause-game-box button {
+    margin: 10px;
+}
