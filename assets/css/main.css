@@ -17,6 +17,7 @@ body {
   background-size: 400% 400%;
   animation: backgroundGradient 20s ease infinite;
   height: 100vh;
+  overflow: hidden;
 }
 
 @keyframes backgroundGradient {
@@ -29,48 +30,6 @@ body {
   100% {
     background-position: 0% 50%;
   }
-}
-
-h1 {
-  font-family: "Modak";
-  font-weight: 400;
-  font-size: 5em;
-  text-align: center;
-  margin: 0 3rem;
-}
-
-@keyframes wobb {
-  0%,
-  100% {
-    transform: translateY(0px);
-  }
-  25% {
-    transform: translateY(-3px);
-  }
-  75% {
-    transform: translateY(3px);
-  }
-}
-
-h1 span {
-  animation-name: wobb;
-  animation-iteration-count: infinite;
-  animation-timing-function: linear;
-  animation-duration: 800ms;
-  display: inline-block;
-  transform: translateY(0px);
-}
-
-h1 span.spacer {
-  width: 1.2rem;
-}
-
-main {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  height: 100vh;
 }
 
 button {
@@ -90,14 +49,4 @@ button {
 button:hover {
   opacity: 0.8;
   transform: scale(1.05);
-}
-
-.cloud {
-  position: absolute;
-  overflow: hidden;
-  width: 1280px;
-  height: 500px;
-  object-fit: contain;
-  top: 0;
-  right: 0;
 }

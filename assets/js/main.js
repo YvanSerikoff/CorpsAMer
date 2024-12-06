@@ -16,3 +16,17 @@ all.forEach((el) => {
 
   el.innerHTML = textCode.join("");
 });
+
+function play() {
+  document.querySelector(".clouds-left").style.transform = "translateX(-60%)";
+
+  document.querySelector(".clouds-right").style.transform = "translateX(60%)";
+
+  setTimeout(() => {
+    document.querySelector("main").style.transform = "translateY(-150%)";
+  }, 100);
+
+  setTimeout(() => {
+    window.location.href = "game.html";
+  }, 800);
+}
