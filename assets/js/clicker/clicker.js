@@ -8,9 +8,9 @@ const indexButton = document.getElementById('indexButton');
 const newClickerButton = document.getElementById('newClickerButton');
 const body = document.querySelector('body');
 
-let score = 500;
+let score = 0;
 let totalScore = 0;
-const scoreFinal = 1000000;
+const scoreFinal = 10000;
 
     // Retrieve score and totalScore from localStorage if they exist
     const savedScore = localStorage.getItem('score');
@@ -19,10 +19,15 @@ const scoreFinal = 1000000;
         score = parseInt(savedScore, 10); // Convert to number
         scoreDisplay.textContent = score; // Update display
     }
+
     if (savedTotalScore !== null) {
         totalScore = parseInt(savedTotalScore, 10); // Convert to number
         totalScoreDisplay.textContent = totalScore; // Update display
         progressBar.value = totalScore; // Update progress bar
+    }
+
+    if (totalScore !== scoreFinal){
+        modal.style.display = 'none';
     }
 
     plankton.addEventListener('click', function() {
@@ -30,8 +35,8 @@ const scoreFinal = 1000000;
             plankton.classList.remove('clicked');
             void plankton.offsetWidth; // Force reflow to restart the animation
         }
-        score += 10000;
-        totalScore += 10000;
+        score += clickValue;
+        totalScore += clickValue;
         scoreDisplay.textContent = score;
         totalScoreDisplay.textContent = totalScore;
         progressBar.value = totalScore; // Update progress bar
@@ -40,12 +45,15 @@ const scoreFinal = 1000000;
 
         plankton.classList.add('clicked');
 
-        if (totalScore >= 200000) changeBackground(body, 'assets/images/clicker/bg2.jpg');
-        if (totalScore >= 300000) changeBackground(body, 'assets/images/clicker/bg3.jpg');
-        if (totalScore >= 400000) changeBackground(body, 'assets/images/clicker/bg4.jpg');
+        if (totalScore >= 1500) changeBackground(body, 'assets/images/clicker/bg2.jpg');
+        if (totalScore >= 3000) changeBackground(body, 'assets/images/clicker/bg3.jpg');
+        if (totalScore >= 4500) changeBackground(body, 'assets/images/clicker/bg4.jpg');
+        if (totalScore >= 6000) changeBackground(body, 'assets/images/clicker/bg5.jpg');
+        if (totalScore >= 7500) changeBackground(body, 'assets/images/clicker/bg6.jpg');
+        if (totalScore >= 9000) changeBackground(body, 'assets/images/clicker/bg7.jpg');
 
-        if(score >= scoreFinal){
-            modal.style.display ='block';
+        if (totalScore >= scoreFinal) {
+            modal.style.display = 'block';
         }
     });
 
@@ -78,12 +86,14 @@ const scoreFinal = 1000000;
         score = 0; // Reset score
         totalScore = 0; // Reset totalScore
         scoreDisplay.textContent = score; // Update display
+
         totalScoreDisplay.textContent = totalScore; // Update display
         progressBar.value = totalScore;
         clickValue = 1 ;
         changeBackground(body, 'assets/images/clicker/bg1.jpg');
         // Reset progress bar
         localStorage.removeItem('score'); // Remove score from localStorage
+
         localStorage.removeItem('totalScore'); // Remove totalScore from localStorage
         resetUpgrades();
     });
