@@ -118,11 +118,11 @@ function startPoumon() {
 }
 
 function startFoie() {
-  console.log("Lung started");
+  console.log("Liver started");
 
   popup.style.display = "block";
 
-  iframe.src = "clicker.html";
+  iframe.src = "liver.html";
 
   iframe.style.display = "block";
 }
