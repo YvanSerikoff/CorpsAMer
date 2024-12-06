@@ -35,8 +35,8 @@ const scoreFinal = 10000;
             plankton.classList.remove('clicked');
             void plankton.offsetWidth; // Force reflow to restart the animation
         }
-        score += clickValue;
-        totalScore += clickValue;
+        score += 1000;
+        totalScore += 1000;
         scoreDisplay.textContent = score;
         totalScoreDisplay.textContent = totalScore;
         progressBar.value = totalScore; // Update progress bar
