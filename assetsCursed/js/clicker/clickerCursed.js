@@ -25,6 +25,17 @@ if (savedTotalScore !== null) {
     progressBar.value = totalScore; // Update progress bar
 }
 
+if (totalScore !== scoreFinal){
+    modal.style.display = 'none';
+}
+
+function getRandomPosition(element) {
+    const x = Math.floor(Math.random() * (window.innerWidth - element.offsetWidth));
+    const y = Math.floor(Math.random() * (window.innerHeight - element.offsetHeight));
+    return { x, y };
+}
+
+
 plankton.addEventListener('click', function() {
     if (plankton.classList.contains('clicked')) {
         plankton.classList.remove('clicked');
@@ -40,6 +51,11 @@ plankton.addEventListener('click', function() {
 
     plankton.classList.add('clicked');
 
+    const { x, y } = getRandomPosition(plankton);
+    plankton.style.left = `${x}px`;
+    plankton.style.top = `${y}px`;
+
+
     if (totalScore >= 200000) changeBackground(body, 'assets/images/clicker/bg2.jpg');
     if (totalScore >= 300000) changeBackground(body, 'assets/images/clicker/bg3.jpg');
     if (totalScore >= 400000) changeBackground(body, 'assets/images/clicker/bg4.jpg');
@@ -47,6 +63,10 @@ plankton.addEventListener('click', function() {
     if(score >= scoreFinal){
         modal.style.display ='block';
     }
+});
+
+plankton.addEventListener('dragstart', function (event) {
+    event.preventDefault(); // Empêche le comportement de drag
 });
 
 span.onclick = function (){
@@ -72,6 +92,7 @@ function changeBackground(body, jpg) {
 }
 
 plankton.classList.add('clicked');
+
 
 const resetButton = document.getElementById('reset-button');
 resetButton.addEventListener('click', () => {
