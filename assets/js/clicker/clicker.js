@@ -85,3 +85,4 @@ document.addEventListener('DOMContentLoaded', (event) => {
         localStorage.removeItem('totalScore'); // Remove totalScore from localStorage
         resetUpgrades();
     });
+document.getElementById('resetButton').addEventListener('click', resetUpgrades);

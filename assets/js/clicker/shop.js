@@ -8,6 +8,7 @@ const originalUpgrades = [
 
 let upgrades = [...originalUpgrades];
 let clickValue = 1;
+let autoClickerInterval = null;
 
 function applyUpgradeEffect(upgrade) {
     upgrade.effect();
@@ -16,6 +17,12 @@ function applyUpgradeEffect(upgrade) {
 function resetUpgrades() {
     upgrades = [...originalUpgrades];
     clickValue = 1;
+
+
+    if (autoClickerInterval !== null) {
+        clearInterval(autoClickerInterval);
+        autoClickerInterval = null;
+    }
     renderUpgrades();
 }
 
@@ -66,7 +73,9 @@ document.getElementById('toggleShopButton').addEventListener('click', function()
 });
 
 function startAutoClicker() {
-    setInterval(() => {
+    if (autoClickerInterval !== null) return; // Ne pas démarrer plusieurs auto-clickers
+
+    autoClickerInterval = setInterval(() => {
         score += clickValue;
         scoreDisplay.textContent = score;
         localStorage.setItem('score', score);
